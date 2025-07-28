@@ -1,5 +1,4 @@
-
-   # Course Plan SOK-3020 Econometrics Fall 2025
+# Course Plan SOK-3020 Econometrics Fall 2025
 
 | Session  | Date | To do                                            |
 |------------------|---------|------------------------------------------------------------------|
