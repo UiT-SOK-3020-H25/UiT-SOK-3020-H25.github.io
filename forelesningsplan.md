@@ -31,7 +31,6 @@
 |    |  | Relating to our wages example in class, there is a [report out from SSB](https://www.ssb.no/inntekt-og-forbruk/inntekt-og-formue/artikler/forskjeller-i-livslopsinntekt-mellom-utdanningsgrupper/_/attachment/inline/fbc61677-a679-4edd-93d8-c6095b866d0d:138a258371f5d983314e8175b97bb5ed5adc04e3/RAPP2023-26.pdf){:target='_blank_'} that looks at lifetime income in different professions (in Norwegian) |
 | 4  | 01/8  | Appendix A [Mathematical Tools in R](https://raw.githubusercontent.com/uit-sok-3020-h24/uit-sok-3020-h24.github.io/main/Appendix_A_annotated.R){:target='
 | 6  | 01/8 |  Chapter 2 - The Simple Linear Regression Model |
-|    |     |   [R code Chapter 2](https://raw.githubusercontent.com/uit-sok-3020-h24/uit-sok-3020-h24.github.io/main/R_code_Chapter_2.R){:target='_blank_'}  |
 
 
 
