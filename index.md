@@ -10,9 +10,7 @@ After completing the core content of the course, we will hold weekly seminar ses
 - [Seminarplan](seminarplan.html){:target="blank"}
 
 
-
-
-[Timetable](https://timeplan.uit.no/emne_timeplan.php?sem=24h&fag=&module[]=SOK-3020-1#week-24){:target="blank"} on timeplan.uit.no
+[Timetable](https://tp.educloud.no/uit/app/schedule?semester=25h&scheduleType=course&filterOpen=true&summary=true&tab=calendar&course=SOK-3020%C2%A41&subjectArea=186341300){:target="blank"} on timeplan.uit.no
 
 
 ## Course Description
