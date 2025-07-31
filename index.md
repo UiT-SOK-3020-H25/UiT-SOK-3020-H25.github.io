@@ -16,7 +16,7 @@ After completing the core content of the course, we will hold weekly seminar ses
 ## Course Description
 The course gives a wide introduction to applied econometrics. It introduces the student to methodologies for analyzing economic problems using quantitative methods. There will be an emphasis on linking microeconomic theory to estimation techniques, and interpreting the results of various quantitative exercises using the R software environment for statistical computing and graphics. Upon completing this course, students should have become proficient in developing and interpreting linear regression models as applied to various economic problems and datasets.
 
-Se full description [here](https://uit.no/utdanning/emner/emne/842431/sok-3020?ar=2024&semester=H){:target="blank"}
+Se full description [here](https://uit.no/utdanning/emner/emne/874196/sok-3020){:target="blank"}
 
 ## Instructors 
 - [Øystein Myrland](https://uit.no/ansatte/oystein.myrland){:target="blank"} (course responsible)
