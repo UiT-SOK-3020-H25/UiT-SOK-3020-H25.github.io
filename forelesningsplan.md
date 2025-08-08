@@ -18,11 +18,11 @@
 |   |   | Example P.9 Iterated Expectation  [Rcode](https://raw.githubusercontent.com/uit-sok-3020-h23/uit-sok-3020-h23.github.io/main/example_p9%20iterated%20expectation.R){:target='_blank_'}     |  
 |   |   | Example P.10 Covariance Decomposition  [Rcode](https://raw.githubusercontent.com/uit-sok-3020-h23/uit-sok-3020-h23.github.io/main/example_p10%20covariance%20decomposition.R){:target='_blank_'}   |  
 |   |   | Example P.11 Normal Distribution Probability Calculation  [Rcode](https://raw.githubusercontent.com/uit-sok-3020-h23/uit-sok-3020-h23.github.io/main/example_p11-normal-distribution-probability-calculation.R){:target='_blank_'}  [video](https://uit.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=ed10162c-003a-441f-bc7f-b06200d77a64){:target='_blank_'}   |  
-| 1  |   01/8 | Introduction to R|
+| 1  |   13/08 | Introduction to R|
 |    |       |   Download and [install R (first) then RStudio](https://posit.co/download/rstudio-desktop/){:target='_blank_'} |
 |    |       |  [RStudio IDE :: Cheatsheet](https://rstudio.github.io/cheatsheets/html/rstudio-ide.html){:target='_blank_'}   |
 |    |       |  [Data files from Principles of Econometrics](https://www.principlesofeconometrics.com/poe5/poe5data.html){:target='blank'}       |
-|    |       |  [my first R file](https://raw.githubusercontent.com/uit-sok-3020-h24/uit-sok-3020-h24.github.io/main/my%20first%20r%20file.R){:target='_blank_'} |
+|    |       |  [our first R snippet](https://raw.githubusercontent.com/uit-sok-3020-h24/uit-sok-3020-h24.github.io/main/my%20first%20r%20file.R){:target='_blank_'} |
 | 2  | 01/8      | [my first R exercise](https://raw.githubusercontent.com/uit-sok-3020-h24/uit-sok-3020-h24.github.io/main/my_first_exercise.R){:target='_blank_'}  |
 | 3  | 01/8    |  [Intro to R for Econometrics](https://raw.githubusercontent.com/uit-sok-3020-h24/uit-sok-3020-h24.github.io/main/intro%20to%20R%20for%20econometrics.qmd){:target='_blank_'} |
 |    | | Browse the paper "Econome_blank_'} ["old" video](https://uit.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=e39c6666f51844efa636aee500c51b7a){:target='_blank_'}    |
