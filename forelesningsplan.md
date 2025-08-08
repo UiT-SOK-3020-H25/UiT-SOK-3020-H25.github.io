@@ -21,15 +21,15 @@
 | 1  |   13/08 | Introduction to R|
 |    |       |   Download and [install R (first) then RStudio](https://posit.co/download/rstudio-desktop/){:target='_blank_'} |
 |    |       |  [RStudio IDE :: Cheatsheet](https://rstudio.github.io/cheatsheets/html/rstudio-ide.html){:target='_blank_'}   |
-|    |       |  [Data files from Principles of Econometrics](https://www.principlesofeconometrics.com/poe5/poe5data.html){:target='blank'}       |
+|    |       |  [Data files from Principles of Econometrics](https://www.principlesofeconometrics.com/poe5/poe5data.html){:target='blank'}  [LLM annotated R code](https://chatgpt.com/share/6895fe8c-f40c-8011-9606-3c8886a7f9b9)       |
 |    |       |  [our first R snippet](https://raw.githubusercontent.com/UiT-SOK-3020-H25/UiT-SOK-3020-H25.github.io/refs/heads/main/our_first_R_snippet.r){:target='_blank_'} |
-| 2  | 01/8      | [my first R exercise](https://raw.githubusercontent.com/uit-sok-3020-h24/uit-sok-3020-h24.github.io/main/my_first_exercise.R){:target='_blank_'}  |
-| 3  | 01/8    |  [Intro to R for Econometrics](https://raw.githubusercontent.com/uit-sok-3020-h24/uit-sok-3020-h24.github.io/main/intro%20to%20R%20for%20econometrics.qmd){:target='_blank_'} |
-|    | | Browse the paper "Econome_blank_'} ["old" video](https://uit.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=e39c6666f51844efa636aee500c51b7a){:target='_blank_'}    |
-| 5  | 01/8 | Chapter 1. An introduction to econometrics  [pdf in Canvas/Files] [Quarto](https://raw.githubusercontent.com/uit-sok-3020-h24/uit-sok-3020-h24.github.io/main/chap1_why_study_econometrics.qmd){:target='_blank_'} |tric Computing with 'R'" (in Files in Canvas) |
+|   |       | [my first R exercise](https://raw.githubusercontent.com/uit-sok-3020-h24/uit-sok-3020-h24.github.io/main/my_first_exercise.R){:target='_blank_'}  |
+|   |      |  [Intro to R for Econometrics](https://raw.githubusercontent.com/uit-sok-3020-h24/uit-sok-3020-h24.github.io/main/intro%20to%20R%20for%20econometrics.qmd){:target='_blank_'} |
+|    |    | Browse the paper "Econome_blank_'} ["old" video](https://uit.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=e39c6666f51844efa636aee500c51b7a){:target='_blank_'}    |
+|   | 18/08 | Chapter 1. An introduction to econometrics  [pdf in Canvas/Files] [Quarto](https://raw.githubusercontent.com/uit-sok-3020-h24/uit-sok-3020-h24.github.io/main/chap1_why_study_econometrics.qmd){:target='_blank_'} |tric Computing with 'R'" (in Files in Canvas) |
 |    |  | Relating to our wages example in class, there is a [report out from SSB](https://www.ssb.no/inntekt-og-forbruk/inntekt-og-formue/artikler/forskjeller-i-livslopsinntekt-mellom-utdanningsgrupper/_/attachment/inline/fbc61677-a679-4edd-93d8-c6095b866d0d:138a258371f5d983314e8175b97bb5ed5adc04e3/RAPP2023-26.pdf){:target='_blank_'} that looks at lifetime income in different professions (in Norwegian) |
-| 4  | 01/8  | Appendix A [Mathematical Tools in R](https://raw.githubusercontent.com/uit-sok-3020-h24/uit-sok-3020-h24.github.io/main/Appendix_A_annotated.R){:target='
-| 6  | 01/8 |  Chapter 2 - The Simple Linear Regression Model |
+|   |   | Appendix A [Mathematical Tools in R](https://raw.githubusercontent.com/uit-sok-3020-h24/uit-sok-3020-h24.github.io/main/Appendix_A_annotated.R){:target='
+
 
 
 
