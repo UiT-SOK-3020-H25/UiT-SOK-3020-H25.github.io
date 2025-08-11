@@ -24,7 +24,7 @@
 |    |       |  [Data files from Principles of Econometrics](https://www.principlesofeconometrics.com/poe5/poe5data.html){:target='blank'}  [LLM annotated R code](https://chatgpt.com/share/6895fe8c-f40c-8011-9606-3c8886a7f9b9)       |
 |    |       |  [our first R snippet](https://raw.githubusercontent.com/UiT-SOK-3020-H25/UiT-SOK-3020-H25.github.io/refs/heads/main/our_first_R_snippet.r){:target='_blank_'} |
 |   |       | [my first R exercise](https://raw.githubusercontent.com/UiT-SOK-3020-H25/UiT-SOK-3020-H25.github.io/refs/heads/main/my_first_R_exercise.r){:target='_blank_'}  |
-|    |    | Browse the paper “Econometric Computing with ‘R’” (in Files/Readings in Canvas)} [LLM annotated reading](https://chatgpt.com/share/68960749-0960-8011-8910-1bbbe602e36f) | 
+|    |    | Browse the paper “Econometric Computing with R” (in Files/Readings in Canvas) [LLM annotated reading](https://chatgpt.com/share/68960749-0960-8011-8910-1bbbe602e36f) | 
 |   |     |  --- **Course material below is still under construction** ---  |
 |   | 15/08 | Chapter 1. An introduction to econometrics [pdf in Canvas/Files] [Quarto](https://raw.githubusercontent.com/uit-sok-3020-h24/uit-sok-3020-h24.github.io/main/chap1_why_study_econometrics.qmd){:target='_blank_'} |tric Computing with 'R'" (in Files in Canvas) |
 |   |      |  [Intro to R for Econometrics](https://raw.githubusercontent.com/uit-sok-3020-h24/uit-sok-3020-h24.github.io/main/intro%20to%20R%20for%20econometrics.qmd){:target='_blank_'} |
