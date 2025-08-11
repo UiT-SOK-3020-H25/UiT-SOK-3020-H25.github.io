@@ -27,9 +27,8 @@
 |   |       | [my first R exercise](https://raw.githubusercontent.com/UiT-SOK-3020-H25/UiT-SOK-3020-H25.github.io/refs/heads/main/my_first_R_exercise.r){:target='_blank_'}  |
 |    |    | Browse the paper “Econometric Computing with R” (in Files/Readings in Canvas) [LLM annotated reading](https://chatgpt.com/share/68960749-0960-8011-8910-1bbbe602e36f) | 
 |   |     |  --- **Course material below is still under construction** ---  |
-|   | 15/08 | Chapter 1. An introduction to econometrics [pdf in Canvas/Files] [Quarto](https://raw.githubusercontent.com/uit-sok-3020-h24/uit-sok-3020-h24.github.io/main/chap1_why_study_econometrics.qmd){:target='_blank_'} |tric Computing with 'R'" (in Files in Canvas) |
+|   | 15/08 | Chapter 1. An introduction to econometrics & "Why Study Econometrics, pdf handout in Canvas/Files | 
 |   |      |  [Intro to R for Econometrics](https://raw.githubusercontent.com/uit-sok-3020-h24/uit-sok-3020-h24.github.io/main/intro%20to%20R%20for%20econometrics.qmd){:target='_blank_'} |
-|    |  | Relating to our wages example in class, there is a [report out from SSB](https://www.ssb.no/inntekt-og-forbruk/inntekt-og-formue/artikler/forskjeller-i-livslopsinntekt-mellom-utdanningsgrupper/_/attachment/inline/fbc61677-a679-4edd-93d8-c6095b866d0d:138a258371f5d983314e8175b97bb5ed5adc04e3/RAPP2023-26.pdf){:target='_blank_'} that looks at lifetime income in different professions (in Norwegian) |
 |   |   | Appendix A [Mathematical Tools in R](https://raw.githubusercontent.com/uit-sok-3020-h24/uit-sok-3020-h24.github.io/main/Appendix_A_annotated.R){:target='
 | |  | ["old" video](https://uit.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=e39c6666f51844efa636aee500c51b7a){:target='_blank_'}    |
 
