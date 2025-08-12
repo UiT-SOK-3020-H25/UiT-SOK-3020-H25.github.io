@@ -28,9 +28,12 @@
 |    |    | Browse the paper “Econometric Computing with R” (in Files/Readings in Canvas) [LLM annotated reading](https://chatgpt.com/share/68960749-0960-8011-8910-1bbbe602e36f) | 
 | 2  | 15/08 | Chapter 1. An introduction to econometrics & "Why Study Econometrics", pdf handout in Canvas/Files | 
 |   |      |  [Another Intro to R for Econometrics](https://raw.githubusercontent.com/uit-sok-3020-H25/uit-sok-3020-H25.github.io/main/another%20intro%20to%20R%20for%20econometrics.qmd){:target='_blank_'} |
-|   |     |  --- **Course material below is still under construction** ---  |
-| 3  | 18/08  | Appendix A [Mathematical Tools in R](https://raw.githubusercontent.com/uit-sok-3020-h24/uit-sok-3020-h24.github.io/main/Appendix_A_annotated.R){:target='
+| 3  | 18/08  | Appendix A: [Mathematical Tools in R](https://raw.githubusercontent.com/uit-sok-3020-h25/uit-sok-3020-h25.github.io/main/Apdx_A_annotated.qmd)   |
 | |  | ["old" video](https://uit.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=e39c6666f51844efa636aee500c51b7a){:target='_blank_'}    |
+|   |     |  --- **Course material below is still under construction** ---  |
+|   |     |                                   |
+|   |     |                                   |
+
 
 
 
