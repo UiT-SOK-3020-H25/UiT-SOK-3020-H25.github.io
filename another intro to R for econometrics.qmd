@@ -1,5 +1,5 @@
 ---
-title: "Intro to R for Econometrics"
+title: "Another Intro to R for Econometrics"
 format:
   revealjs: 
     theme: dark
@@ -60,12 +60,6 @@ r["CRAN"] <- "http://cran.r-project.org"
        options(repos=r) })
 length(unique(rownames(available.packages())))
 ```
-
-## Download and install R locally
-
-Find installation files for your OS at: <http://www.r-project.org>
-
-[**Download at CRAN**](https://cloud.r-project.org/)
 
 ## Interacting with R using RStudio
 
