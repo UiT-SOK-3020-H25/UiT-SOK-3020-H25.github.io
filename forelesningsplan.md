@@ -31,6 +31,7 @@
 | 3  | 18/08  | Appendix A: [Mathematical Tools in R](https://raw.githubusercontent.com/uit-sok-3020-h25/uit-sok-3020-h25.github.io/main/Apdx_A_annotated.qmd)   |
 |    |       | [A.12 Profit max (p. 766)](https://raw.githubusercontent.com/uit-sok-3020-h25/uit-sok-3020-h25.github.io/main/profit_maximization.qmd) |
 |    |       |  [Genetic Algorithm, R package GA](https://raw.githubusercontent.com/uit-sok-3020-h25/uit-sok-3020-h25.github.io/main/opt_min_max_GA.R) | 
+|   |        | [Today's scribbling notes](https://raw.githubusercontent.com/uit-sok-3020-h25/uit-sok-3020-h25.github.io/main/Notat%2018.%20aug.%202025.pdf) |
 | |  | ["old" video](https://uit.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=e39c6666f51844efa636aee500c51b7a){:target='_blank_'}    |
 |   |     |  --- **Course material below is still under construction** ---  |
 |   |     |                                   |
