@@ -29,6 +29,8 @@
 | 2  | 15/08 | Chapter 1. An introduction to econometrics & "Why Study Econometrics", pdf handout in Canvas/Files | 
 |   |      |  [Another Intro to R for Econometrics](https://raw.githubusercontent.com/uit-sok-3020-H25/uit-sok-3020-H25.github.io/main/another%20intro%20to%20R%20for%20econometrics.qmd){:target='_blank_'} |
 | 3  | 18/08  | Appendix A: [Mathematical Tools in R](https://raw.githubusercontent.com/uit-sok-3020-h25/uit-sok-3020-h25.github.io/main/Apdx_A_annotated.qmd)   |
+|    |       | [A.12 Profit max (p. 766)](https://raw.githubusercontent.com/uit-sok-3020-h25/uit-sok-3020-h25.github.io/main/profit_maximization.qmd) |
+|    |       |  [Genetic Algorithm, R package GA](https://raw.githubusercontent.com/uit-sok-3020-h25/uit-sok-3020-h25.github.io/main/opt_min_max_GA.R) | 
 | |  | ["old" video](https://uit.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=e39c6666f51844efa636aee500c51b7a){:target='_blank_'}    |
 |   |     |  --- **Course material below is still under construction** ---  |
 |   |     |                                   |
