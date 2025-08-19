@@ -1,0 +1,471 @@
+---
+title: "Appendix A: Exercises - R Solutions"
+format: html
+editor: visual
+---
+
+```{r}
+# Load required packages
+suppressPackageStartupMessages(library(mosaic))
+library(nleqslv)
+library(rgl)
+```
+
+## Exercise A.1: Supply and Demand Functions
+
+For each function, we'll calculate slopes, interpret relationships, and compute elasticities.
+
+### Part (a): Calculate slopes at given points
+
+**Function 1:** $Q = -3 + 2P$ where $P = 10$
+
+```{r}
+# Clear workspace
+rm(list=ls())
+
+# Function 1: Q = -3 + 2P
+Q1 <- makeFun(-3 + 2*P ~ P)
+Q1(10)  # Q when P = 10
+
+# Plot function
+plotFun(Q1(P) ~ P, xlim = c(0,12), main = "Q = -3 + 2P")
+
+# Slope/derivative: dQ/dP = 2 (constant)
+D(expression(-3 + 2*P), "P")
+slope1 <- 2
+print(paste("Slope at P=10:", slope1))
+```
+
+**Function 2:** $Q = 100 - 20P$ where $P = 4$
+
+```{r}
+# Function 2: Q = 100 - 20P
+Q2 <- makeFun(100 - 20*P ~ P)
+Q2(4)  # Q when P = 4
+
+# Plot function
+plotFun(Q2(P) ~ P, xlim = c(0,6), main = "Q = 100 - 20P")
+
+# Slope/derivative: dQ/dP = -20 (constant)
+D(expression(100 - 20*P), "P")
+slope2 <- -20
+print(paste("Slope at P=4:", slope2))
+```
+
+**Function 3:** $Q = 50P^{-2}$ where $P = 2$
+
+```{r}
+# Function 3: Q = 50*P^(-2)
+Q3 <- makeFun(50*P^-2 ~ P)
+Q3(2)  # Q when P = 2
+
+# Plot function
+plotFun(Q3(P) ~ P, xlim = c(0.5,10), main = "Q = 50P^(-2)")
+
+# Slope/derivative: dQ/dP = -100*P^(-3)
+D(expression(50*P^-2), "P")
+slope3_at_P2 <- -100 * (2^-3)
+print(paste("Slope at P=2:", slope3_at_P2))
+```
+
+### Part (b): Interpretation of slopes
+
+-   **Function 1:** Slope = 2 (positive, constant) → **Supply curve** (positive relationship)
+-   **Function 2:** Slope = -20 (negative, constant) → **Demand curve** (inverse relationship)\
+-   **Function 3:** Slope = $-100P^{-3}$ (negative, variable) → **Demand curve** (inverse relationship)
+
+### Part (c): Calculate elasticities
+
+**Elasticity formula:** $\varepsilon = \frac{dQ}{dP} \cdot \frac{P}{Q}$
+
+```{r}
+# Function 1 elasticity at P = 10
+P1 <- 10
+Q1_val <- Q1(P1)
+elasticity1 <- slope1 * P1/Q1_val
+print(paste("Elasticity 1 at P=10:", round(elasticity1, 3)))
+
+# Function 2 elasticity at P = 4
+P2 <- 4
+Q2_val <- Q2(P2)
+elasticity2 <- slope2 * P2/Q2_val
+print(paste("Elasticity 2 at P=4:", round(elasticity2, 3)))
+
+# Function 3 elasticity at P = 2
+P3 <- 2
+Q3_val <- Q3(P3)
+slope3_val <- -100 * (P3^-3)
+elasticity3 <- slope3_val * P3/Q3_val
+print(paste("Elasticity 3 at P=2:", round(elasticity3, 3)))
+
+# Plot elasticities
+e1 <- function(P) {2 * P/Q1(P)}
+e2 <- function(P) {-20 * P/Q2(P)}
+e3 <- function(P) {-100*P^(-3) * P/Q3(P)}
+
+# use curve
+curve(e1(x), from = 0, to = 12, col = "blue", ylab = "Elasticity", xlab = "Price (P)", main = "Elasticities of Function 1")
+curve(e2(x), from = 0, to = 12, col = "red",  ylab = "Elasticity", xlab = "Price (P)", main = "Elasticities of Function 2")
+curve(e3(x), from = 0.5, to = 10, col = "green", ylab = "Elasticity", xlab = "Price (P)", main = "Elasticities of Function 3")
+
+```
+
+------------------------------------------------------------------------
+
+## Exercise A.2: Infant Mortality and Income
+
+Three relationships between infant mortality and per capita income:
+
+### Functions Setup
+
+```{r}
+rm(list=ls())
+
+# Function 1: ln(MORTALITY) = 7.5 - 0.5*ln(INCOME)
+# Therefore: MORTALITY = exp(7.5) * INCOME^(-0.5)
+f1 <- function(INCOME) exp(7.5) * INCOME^(-0.5)                 # log model implied
+
+# Function 2: MORTALITY = 1400 - 100*INCOME + 1.67*INCOME^2
+f2 <- function(INCOME) 1400 - 100*INCOME + 1.67*INCOME^2        # quadratic
+
+# Function 3: MORTALITY = 1500 - 50*INCOME
+f3 <- function(INCOME) 1500 - 50*INCOME                         # linear
+```
+
+### Part (a): Plot relationships
+
+```{r}
+# Plot all three functions
+ggplot() +
+  stat_function(fun = f1, aes(color = "Function 1 (log)"),      xlim = c(1, 30), linewidth = 1) +
+  stat_function(fun = f2, aes(color = "Function 2 (quadratic)"),xlim = c(1, 30), linewidth = 1) +
+  stat_function(fun = f3, aes(color = "Function 3 (linear)"),   xlim = c(1, 30), linewidth = 1) +
+  coord_cartesian(xlim = c(1, 30), ylim = c(0, 2000)) +
+  scale_color_manual(values = c("Function 1 (log)" = "black",
+                                "Function 2 (quadratic)" = "red",
+                                "Function 3 (linear)" = "blue")) +
+  labs(title = "Mortality vs Income", x = "INCOME", y = "Mortality Rate", color = NULL) +
+  theme_minimal()
+```
+
+### Part (b): Calculate elasticities
+
+**Elasticity formula:** $\varepsilon = \frac{dM}{dI} \cdot \frac{I}{M}$ where M = MORTALITY, I = INCOME
+
+```{r}
+rm(list = ls())
+library(tidyverse)
+
+# Mortality functions
+f1 <- function(INCOME) exp(7.5) * INCOME^(-0.5)                 # log model
+f2 <- function(INCOME) 1400 - 100*INCOME + 1.67*INCOME^2        # quadratic
+f3 <- function(INCOME) 1500 - 50*INCOME                         # linear
+
+# Elasticities  e(I) = (dM/dI) * I / M(I)
+e1 <- function(INCOME) {
+  slope <- exp(7.5) * (-0.5) * INCOME^(-1.5)
+  slope * INCOME / f1(INCOME)          # equals -0.5 for all INCOME
+}
+
+e2 <- function(INCOME) {
+  slope <- -100 + 3.34*INCOME
+  slope * INCOME / f2(INCOME)
+}
+
+e3 <- function(INCOME) {
+  slope <- -50
+  slope * INCOME / f3(INCOME)          # asymptote at INCOME = 30
+}
+
+# Build a grid
+grid <- tibble(INCOME = c(1, 3, 25)) |>
+  mutate(
+    `Function 1 (log)`       = e1(INCOME),
+    `Function 2 (quadratic)` = e2(INCOME),
+    `Function 3 (linear)`    = e3(INCOME)
+  ) |>
+  pivot_longer(-INCOME, names_to = "Function", values_to = "Elasticity")
+
+grid
+```
+
+------------------------------------------------------------------------
+
+### Exercise A. 3
+
+Suppose the rate of inflation $INF$, the annual percentage increase in the general price level, is related to the annual unemployment rate $UNEMP$ by the equation $INF=-3+7 \times(1 / UNEMP)$.
+
+a.  Sketch the curve for values of UNEMP between 1 and 10 .
+
+b.  Where is the impact of a change in the unemployment rate the largest?
+
+c.  If the unemployment rate is $5 \%$, what is the marginal effect of an increase in the unemployment rate on the inflation rate?
+
+```{r}
+# --- Define the Inflation Function ---
+# INF = -3 + 7 * (1 / UNEMP)
+inf_rate <- function(unemp) {
+  -3 + 7 * (1 / unemp)
+}
+
+# --- Part a: Sketch the curve for UNEMP between 1 and 10 ---
+
+# Create a sequence of unemployment values from 1 to 10
+unemp_vals <- seq(1, 10, length.out = 200)
+
+# Create a data frame for plotting
+plot_data <- data.frame(
+  UNEMP = unemp_vals,
+  INF = inf_rate(unemp_vals)
+)
+
+# Create the plot using ggplot2
+ggplot(plot_data, aes(x = UNEMP, y = INF)) +
+  geom_line(color = "navy", linewidth = 1.2) +
+  labs(
+    title = "Inflation Rate vs. Unemployment Rate",
+    subtitle = expression(paste("Based on the model: INF = -3 + 7 * (1/UNEMP)")),
+    x = "Unemployment Rate (%)",
+    y = "Inflation Rate (%)"
+  ) +
+  # Add a point and annotation for part (c)
+  geom_point(aes(x = 5, y = inf_rate(5)), color = "red", size = 4) +
+  annotate(
+    "text", 
+    x = 5.5, 
+    y = inf_rate(5) + 0.5, 
+    label = paste("At UNEMP = 5%, INF =", round(inf_rate(5), 2), "%"),
+    hjust = 0
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, face = "bold"),
+    plot.subtitle = element_text(hjust = 0.5)
+  )
+
+
+# --- Part b: Where is the impact of a change in UNEMP the largest? ---
+
+# To find the impact, we need the derivative of INF with respect to UNEMP.
+# d(INF)/d(UNEMP) = d/d(UNEMP) [-3 + 7 * UNEMP^(-1)]
+# The derivative is: -7 * UNEMP^(-2) = -7 / UNEMP^2
+
+D(expression(-3 + 7 * (1 / unemp)), "unemp")
+
+# The "impact" refers to the magnitude of this change (ignoring the negative sign).
+# The magnitude is 7 / UNEMP^2.
+# This value is largest when the denominator (UNEMP^2) is smallest.
+# Therefore, the impact is largest at the lowest possible unemployment rate.
+# On our interval [1, 10], the impact is largest at UNEMP = 1.
+
+curve(-(7 * (1/x^2)), from = 1, to = 10, 
+      xlab = "Unemployment Rate (%)", ylab = "Impact on Inflation Rate",
+      main = "Impact of Unemployment Rate on Inflation Rate",
+      col = "darkgreen", lwd = 2)
+
+# --- Part c: Marginal effect if UNEMP is 5% ---
+
+# The marginal effect is the value of the derivative at a specific point.
+# We define a function for the derivative (the marginal effect).
+marginal_effect <- function(unemp) {
+  -7 / (unemp^2)
+}
+
+# Calculate the marginal effect when UNEMP = 5
+unemp_rate_at_5 <- 5
+marginal_effect_at_5 <- marginal_effect(unemp_rate_at_5)
+
+# Print the result to the console
+print(paste("The marginal effect at an unemployment rate of 5% is:", marginal_effect_at_5))
+# Interpretation: A 1 percentage point increase in unemployment from 5%
+# is associated with a decrease of 0.28 percentage points in the inflation rate.
+```
+
+------------------------------------------------------------------------
+
+## Exercise A.6: Agricultural Technology and Wheat Production
+
+### Part (a): Logarithmic production function
+
+**Function:** $WHEAT_t = 0.58 + 0.14 \ln(t)$
+
+```{r}
+rm(list=ls())
+
+# Define function
+WHEAT_a <- makeFun(0.58 + 0.14*log(t) ~ t)
+
+# Plot function
+plotFun(WHEAT_a(t) ~ t, xlim = c(1,51), 
+        main = "Wheat Production: Logarithmic Model", 
+        ylab = "Wheat Production (tonnes/hectare)")
+
+# Calculate derivative: dWHEAT/dt = 0.14/t
+slope_a <- function(t) 0.14/t
+slope_at_49 <- slope_a(49)
+print(paste("Slope at t=49:", round(slope_at_49, 6)))
+
+# Calculate elasticity: ε = (dWHEAT/dt) * (t/WHEAT)
+elasticity_a <- function(t) (0.14/t) * t / WHEAT_a(t)
+# Simplifies to: ε = 0.14 / WHEAT(t)
+elasticity_at_49 <- elasticity_a(49)
+print(paste("Elasticity at t=49:", round(elasticity_at_49, 4)))
+```
+
+### Part (b): Quadratic production function
+
+**Function:** $WHEAT_t = 0.78 + 0.0003t^2$
+
+```{r}
+# Define function
+WHEAT_b <- makeFun(0.78 + 0.0003*t^2 ~ t)
+
+# Plot function
+plotFun(WHEAT_b(t) ~ t, xlim = c(1,51), 
+        main = "Wheat Production: Quadratic Model", 
+        ylab = "Wheat Production (tonnes/hectare)")
+
+D(expression(0.78 + 0.0003*t^2), "t")
+
+# Calculate derivative: dWHEAT/dt = 0.0009*t^2
+slope_b <- function(t) 3e-04 * (2 * t)
+slope_at_49_b <- slope_b(49)
+print(paste("Slope at t=49:", round(slope_at_49_b, 4)))
+
+# Calculate elasticity
+elasticity_b <- function(t) (3e-04 * (2 * t)) * t / WHEAT_b(t)
+elasticity_at_49_b <- elasticity_b(49)
+print(paste("Elasticity at t=49:", round(elasticity_at_49_b, 4)))
+
+# Plot elasticities comparison
+plotFun(elasticity_a(t) ~ t, xlim = c(1,51), 
+        main = "Elasticity a(t)", ylab = "Elasticity")
+plotFun(elasticity_b(t) ~ t, xlim = c(1,51), col = "red",
+        main = "Elasticity b(t)", ylab = "Elasticity")
+```
+
+------------------------------------------------------------------------
+
+## Exercise A.7: Wage-Age Relationship
+
+**Function:** $WAGE = 10 + 200 \cdot AGE - 2 \cdot AGE^2$
+
+```{r}
+rm(list=ls())
+
+# Define wage function
+WAGE <- makeFun(10 + 200*AGE - 2*AGE^2 ~ AGE)
+```
+
+### Part (a): Plot the function
+
+```{r}
+plotFun(WAGE(AGE) ~ AGE, xlim = c(20,70), 
+        main = "Wage-Age Relationship", ylab = "Wage", xlab = "Age")
+```
+
+### Part (b): Calculate derivatives and tangent line
+
+```{r}
+rm(list=ls())
+
+# Functions (plain R keeps things simple)
+WAGE  <- function(AGE) 10 + 200*AGE - 2*AGE^2
+dWAGE <- function(AGE) 200 - 4*AGE
+
+# Tangent at AGE = 30
+age_30 <- 30
+wage_30 <- WAGE(age_30)
+slope_30 <- dWAGE(age_30)
+intercept_30 <- wage_30 - slope_30*age_30  # = 1810
+
+# Plot wage curve + tangent + point
+ggplot() +
+  stat_function(fun = WAGE, aes(color = "WAGE(AGE)"), xlim = c(20, 70), linewidth = 1.1) +
+  stat_function(fun = function(x) intercept_30 + slope_30*x,
+                aes(color = "Tangent at AGE=30"), xlim = c(20, 70), linewidth = 1) +
+  geom_point(data = data.frame(AGE = age_30, WAGE = wage_30),
+             aes(AGE, WAGE, color = "Point (30, WAGE)"), size = 2) +
+  scale_color_manual(values = c("WAGE(AGE)" = "black",
+                                "Tangent at AGE=30" = "red",
+                                "Point (30, WAGE)" = "red")) +
+  labs(title = "Wage Function with Tangent at AGE = 30",
+       x = "Age", y = "Wage", color = NULL) +
+  theme_minimal()
+```
+
+### Part (c): Find wage-maximizing age
+
+```{r}
+# Find where derivative equals zero
+max_age <- findZeros(dWAGE(AGE) ~ AGE, xlim = c(20,70))
+max_wage <- WAGE(max_age)
+
+cat(sprintf("Wage is maximized at AGE = %.0f with WAGE = %.0f\n", 
+            max_age, max_wage))
+```
+
+### Parts (d) and (e): Numerical derivative
+
+```{r}
+# Calculate wages at nearby points
+wage_2999 <- WAGE(29.99)
+wage_3001 <- WAGE(30.01)
+
+cat(sprintf("WAGE(29.99) = %.6f\n", wage_2999))
+cat(sprintf("WAGE(30.01) = %.6f\n", wage_3001))
+
+# Numerical derivative
+numerical_deriv <- (wage_3001 - wage_2999) / (30.01 - 29.99)
+analytical_deriv <- dWAGE(30)
+
+cat(sprintf("\nNumerical derivative: %.6f\n", numerical_deriv))
+cat(sprintf("Analytical derivative: %.6f\n", analytical_deriv))
+cat(sprintf("Difference: %.8f\n", abs(numerical_deriv - analytical_deriv)))
+
+```
+
+------------------------------------------------------------------------
+
+## Exercise A.10: Exponential Probability Function
+
+**Function:** $f(y) = 2e^{-2y}$ for $0 < y < \infty$
+
+```{r}
+rm(list=ls())
+
+# Define function
+f <- function(y) { 2*exp(-2*y) }
+```
+
+### Part (a): Plot the function
+
+```{r}
+curve(f(x), 0, 4, ylab = "f(y)", xlab = "y", 
+      main = "Exponential Function f(y) = 2e^(-2y)")
+```
+
+### Part (b): Calculate and illustrate integral from y=1 to y=2
+
+```{r}
+# Calculate integral
+integral_result <- integrate(f, lower = 1, upper = 2)
+area_value <- integral_result$value
+
+cat(sprintf("∫₁² 2e^(-2y) dy = %.6f\n", area_value))
+
+# Create visualization with shaded area
+curve(f(x), 0, 4, ylab = "f(y)", xlab = "y", 
+      main = paste("P(1 ≤ y ≤ 2) =", round(area_value, 4)))
+
+# Shade the area under the curve
+x_shade <- seq(1, 2, 0.01)
+y_shade <- f(x_shade)
+polygon(c(1, x_shade, 2), c(0, y_shade, 0), col = 'skyblue', border = NA)
+
+# Add text showing the area value
+text(1.5, 0.05, sprintf("Area = %.4f", area_value), cex = 1.2, font = 2)
+
+# Add vertical lines at integration limits
+abline(v = c(1, 2), lty = 2, col = "red")
+```
