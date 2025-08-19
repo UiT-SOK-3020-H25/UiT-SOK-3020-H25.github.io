@@ -34,11 +34,10 @@
 |   |        | [Today's scribbling notes](https://raw.githubusercontent.com/uit-sok-3020-h25/uit-sok-3020-h25.github.io/main/Notat%2018.%20aug.%202025.pdf){:target='_blank_'} |
 | |  | ["old" video](https://uit.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=e39c6666f51844efa636aee500c51b7a){:target='_blank_'}    |
 | Assignment 1 posted | Due date 26/08  | Complete exercises A.14, A.19, and A.20 in POE5. If you have not yet purchased the textbook, a PDF of these exercises is available in Canvas under Files > Readings. Please solve the exercises using R and submit your solution as a PDF file. To earn 5 points toward your assignment score, your submission must include comments. |
-| 4   |  19/08   |  In class R coding, we will cover exercise A.2, A.3, A.6, A.7 and A.10                               |
-|     |            |  [solution](https://raw.githubusercontent.com/uit-sok-3020-h25/uit-sok-3020-h25.github.io/main/Apdx_A_soln_exerc.qmd)   |
+| 4   |  19/08   |  In class R coding, we will cover exercise A.2, A.3, A.6, A.7 and A.10   [solution](https://raw.githubusercontent.com/uit-sok-3020-h25/uit-sok-3020-h25.github.io/main/Apdx_A_soln_exerc.qmd)                         |
 | 5  | 20/08    | Appendix B, Probability Concepts                                |
 |    |         |                  |
-|    |         |                  |
+|    |         | [Project MOSAIC](https://cran.r-project.org/web/packages/mosaic/index.html)                 |
 |   |     |  --- **Course material below is still under construction** ---  |
 |   |     |                                   |
 
