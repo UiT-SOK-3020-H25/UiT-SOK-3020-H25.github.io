@@ -37,10 +37,12 @@
 | 4   |  19/08   |  In class R coding, we will cover exercise A.2, A.3, A.6, A.7 and A.10   [solution](https://raw.githubusercontent.com/uit-sok-3020-h25/uit-sok-3020-h25.github.io/main/Apdx_A_soln_exerc.qmd)                         |
 | 5  | 20/08    | Appendix B, Probability Concepts                                |
 |    |         |  [Quarto presentation](https://raw.githubusercontent.com/uit-sok-3020-h25/uit-sok-3020-h25.github.io/main/Apdx_B.qmd)  [R file with probability distributions](https://raw.githubusercontent.com/uit-sok-3020-h25/uit-sok-3020-h25.github.io/main/distribution_examples.R)                |
+|   |        | [Today's scribbling notes](https://raw.githubusercontent.com/uit-sok-3020-h25/uit-sok-3020-h25.github.io/main/Notat%2020.%20aug.%202025.pdf){:target='_blank_'} |
 |    |         | [Project MOSAIC resources](https://cran.r-project.org/web/packages/mosaic/index.html)                 |
 |   |     |  --- **Course material below is still under construction** ---  |
+|  6 | 22/8    |  Appendix C, Review of Statistical Inference                           |
+|  7 |  25/8   |                                   |
 |   |     |                                   |
-
 
 
 
