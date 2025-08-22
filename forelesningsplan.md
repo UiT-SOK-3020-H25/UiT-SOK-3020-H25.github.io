@@ -39,10 +39,15 @@
 |    |         |  [Quarto presentation](https://raw.githubusercontent.com/uit-sok-3020-h25/uit-sok-3020-h25.github.io/main/Apdx_B.qmd)  [R file with probability distributions](https://raw.githubusercontent.com/uit-sok-3020-h25/uit-sok-3020-h25.github.io/main/distribution_examples.R)                |
 |   |        | [Today's scribbling notes](https://raw.githubusercontent.com/uit-sok-3020-h25/uit-sok-3020-h25.github.io/main/Notat%2020.%20aug.%202025.pdf){:target='_blank_'} |
 |    |         | [Project MOSAIC resources](https://cran.r-project.org/web/packages/mosaic/index.html)                 |
-|   |     |  --- **Course material below is still under construction** ---  |
 |  6 | 22/8    |  Appendix C, Review of Statistical Inference                           |
+|   |     |      PDF file of lecture notes is in Canvas > Files > Readings                         |
+|   |     |      [Quarto file]      [R code]                         |
 |  7 |  25/8   |                                   |
-|   |     |                                   |
+| 8  |  26/8   |   Chapter 2 - The Simple Linear Regression Model                            |
+|   |     |  --- **Course material below is still under construction** ---  |
+|   |     |                               |
+
+
 
 
 
