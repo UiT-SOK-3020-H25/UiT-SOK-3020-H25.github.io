@@ -41,8 +41,8 @@
 |    |         | [Project MOSAIC resources](https://cran.r-project.org/web/packages/mosaic/index.html)                 |
 |  6 | 22/8    |  Appendix C, Review of Statistical Inference                           |
 |   |     |      PDF file of lecture notes is in Canvas > Files > Readings                         |
-|   |     |      [Quarto file]      [R code]                         |
-|  7 |  25/8   |                                   |
+|   |     |      [Quarto file](https://raw.githubusercontent.com/uit-sok-3020-h25/uit-sok-3020-h25.github.io/main/Apdx_C_new.qmd)      [R code](https://raw.githubusercontent.com/uit-sok-3020-h25/uit-sok-3020-h25.github.io/main/teach_demos.R)                         |
+|  7 |  25/8   |  Continue on Appendix C                                 |
 | 8  |  26/8   |   Chapter 2 - The Simple Linear Regression Model                            |
 |   |     |  --- **Course material below is still under construction** ---  |
 |   |     |                               |
