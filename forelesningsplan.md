@@ -49,6 +49,10 @@
 |11|03/9|Chapter 4: Prediction, Goodness-of-Fit, and Modeling Issues|
 |12|||
 |13|||
+|15|||
+|16|||
+||||
+||||
 
 
 
