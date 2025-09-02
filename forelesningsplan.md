@@ -44,14 +44,11 @@
 |   |     |      [Quarto file](https://raw.githubusercontent.com/uit-sok-3020-h25/uit-sok-3020-h25.github.io/main/Apdx_C_new.qmd)      [R code](https://raw.githubusercontent.com/uit-sok-3020-h25/uit-sok-3020-h25.github.io/main/teach_demos.R)                         |
 |  7 |  25/8   |  Continue on Appendix C                                 |
 | 8  |  26/8   |   Chapter 2 - The Simple Linear Regression Model                            |
-|   |     |  --- **Course material below is still under construction** ---  |
-|   9|     |  [Quarto file, Chap-2](https://github.com/UiT-SOK-3020-H25/UiT-SOK-3020-H25.github.io/blob/main/Chapter2_PPT.qmd)                            |
-|10|||
-|11|||
-|12||[Quaro file, Chap-3](https://raw.githubusercontent.com/UiT-SOK-3020-H25/UiT-SOK-3020-H25.github.io/refs/heads/main/Chapter3_PPT.qmd)|
-||||
-||||
-||||
+|   9| 28/8     |  [Quarto file, Chap-2](https://github.com/UiT-SOK-3020-H25/UiT-SOK-3020-H25.github.io/blob/main/Chapter2_PPT.qmd)                            |
+|10|02/9|[Quaro file, Chap-3](https://raw.githubusercontent.com/UiT-SOK-3020-H25/UiT-SOK-3020-H25.github.io/refs/heads/main/Chapter3_PPT.qmd)|
+|11|03/9|Chapter 4: Prediction, Goodness-of-Fit, and Modeling Issues|
+|12|||
+|13|||
 
 
 
