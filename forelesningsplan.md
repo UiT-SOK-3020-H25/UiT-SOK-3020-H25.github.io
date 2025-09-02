@@ -46,8 +46,12 @@
 | 8  |  26/8   |   Chapter 2 - The Simple Linear Regression Model                            |
 |   |     |  --- **Course material below is still under construction** ---  |
 |   9|     |  [Quarto file, Chap-2](https://github.com/UiT-SOK-3020-H25/UiT-SOK-3020-H25.github.io/blob/main/Chapter2_PPT.qmd)                            |
-
-
+|10|||
+|11|||
+|12||[Quaro file, Chap-3](https://raw.githubusercontent.com/UiT-SOK-3020-H25/UiT-SOK-3020-H25.github.io/refs/heads/main/Chapter3_PPT.qmd)|
+||||
+||||
+||||
 
 
 
