@@ -48,8 +48,9 @@
 |10|02/9|[Quaro file, Chap-3](https://raw.githubusercontent.com/UiT-SOK-3020-H25/UiT-SOK-3020-H25.github.io/refs/heads/main/Chapter3_PPT.qmd)|
 |11|03/9|Chapter 4: Prediction, Goodness-of-Fit, and Modeling Issues|
 |||[Chap 04 R code](https://github.com/UiT-SOK-3020-H25/UiT-SOK-3020-H25.github.io/blob/main/Chapter_4.R)|
-|12|||
-|13|||
+|12|10/09|Chapter 5: The Multiple Regression Model|
+|||[Chap 05 R code](https://github.com/UiT-SOK-3020-H25/UiT-SOK-3020-H25.github.io/blob/main/Chapter_5.R)|
+|13|11/09|Chapter 6: Further Inference in the Multiple Regression Model |
 |15|||
 |16|||
 ||||
