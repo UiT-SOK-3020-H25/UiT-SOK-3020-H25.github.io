@@ -52,6 +52,7 @@
 |Exercise 2|| Try Q 4.16 from the book, page 185|
 |12|10/09|Chapter 5: The Multiple Regression Model|
 |||[R code for Chap 05](https://github.com/UiT-SOK-3020-H25/UiT-SOK-3020-H25.github.io/blob/main/Chapter_5.R)|
+|Exercise 3|| Try Q 5.18  on page 240-241 and Q 5.23 on page 242-243 from the book|
 |13|11/09|Chapter 6: Further Inference in the Multiple Regression Model |
 |||[R code for Chap 06](https://github.com/UiT-SOK-3020-H25/UiT-SOK-3020-H25.github.io/blob/main/Chapter_6.R)|
 |15|||
