@@ -45,7 +45,7 @@
 |  7 |  25/8   |  Continue on Appendix C                                 |
 | 8  |  26/8   |   Chapter 2 - The Simple Linear Regression Model                            |
 |   9| 28/8     |  [Quarto file, Chap-2](https://github.com/UiT-SOK-3020-H25/UiT-SOK-3020-H25.github.io/blob/main/Chapter2_PPT.qmd)                            |
-|10|02/9|[Quaro file, Chap-3](https://raw.githubusercontent.com/UiT-SOK-3020-H25/UiT-SOK-3020-H25.github.io/refs/heads/main/Chapter3_PPT.qmd)|
+|10|02/9|[Quarto file, Chap-3](https://raw.githubusercontent.com/UiT-SOK-3020-H25/UiT-SOK-3020-H25.github.io/refs/heads/main/Chapter3_PPT.qmd)|
 |Exercise 1 || Try Q 3.20 from the book, page 139|
 |11|03/9|Chapter 4: Prediction, Goodness-of-Fit, and Modeling Issues|
 |||[R code for Chap 04](https://github.com/UiT-SOK-3020-H25/UiT-SOK-3020-H25.github.io/blob/main/Chapter_4.R)|
@@ -57,7 +57,7 @@
 ||15/09|Chapter 6: Further Inference in the Multiple Regression Model |
 |||[R code for Chap 06](https://github.com/UiT-SOK-3020-H25/UiT-SOK-3020-H25.github.io/blob/main/Chapter_6.R)|
 |14|22/09|continue with chapter 06|
-||| [Quarto file, Chap-6](https://github.com/UiT-SOK-3020-H25/UiT-SOK-3020-H25.github.io/blob/main/Chapter2_PPT.qmd) |
+||| [Quarto file, Chap-6](https://github.com/UiT-SOK-3020-H25/UiT-SOK-3020-H25.github.io/blob/main/chap06.qmd) |
 |15|||
 |16|||
 ||||
