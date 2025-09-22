@@ -57,6 +57,7 @@
 ||15/09|Chapter 6: Further Inference in the Multiple Regression Model |
 |||[R code for Chap 06](https://github.com/UiT-SOK-3020-H25/UiT-SOK-3020-H25.github.io/blob/main/Chapter_6.R)|
 |14|22/09|continue with chapter 06|
+||| [Quarto file, Chap-6](https://github.com/UiT-SOK-3020-H25/UiT-SOK-3020-H25.github.io/blob/main/Chapter2_PPT.qmd) |
 |15|||
 |16|||
 ||||
