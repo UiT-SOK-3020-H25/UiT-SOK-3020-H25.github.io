@@ -1,0 +1,765 @@
+---
+title: "Further Inference in the Multiple Regression Model"
+format: revealjs
+editor: visual
+---
+
+
+## Testing Joint Hypotheses: The F-test
+
+- A null hypothesis with multiple conjectures, expressed with more than one equal sign, is called a joint hypothesis. 
+
+- Consider a model:
+
+$$ y= \beta_1 + \beta_2 x_2 + \beta_3x_3+\beta_4x_4+\beta_5 x_5 +e$$
+
+ $H_0: \beta_3 =0, \beta_4 =0, \beta_5 = 0$ vs 
+
+ $H_1:$ at least one of them is different from zero
+
+---
+
+- This is a joint hypothesis test, as it examines whether all conditions are satisfied simultaneously
+
+- Joint hypothesis helps to test for example:
+
+  > whether a group of explanatory variables should be included in a particular model.
+
+  
+---
+
+Consider the model:
+
+$$
+\begin{align}
+SALES = \beta_1 + \beta_2 PRICE + \beta_3 ADVERT + \\ \beta_4 ADVERT^2 + e
+\end{align}
+$$
+
+**Question:** Does advertising have an effect on sales?
+
+- But advertising is in the model as two variables.
+
+- Advertising will have no effect on sales if $\beta_3 = 0, \beta_4 = 0$
+
+- Advertising will have an effect if $\beta_3 \neq 0$ or $\beta_4 \neq 0$ or both are non-zero
+
+---
+
+The hypothesis to be tested is:
+
+$H_0:\beta_3 = 0, \beta_4 = 0$
+
+$H_1: \beta_3 \neq 0 \  \text{or} \   \beta_4  \ \neq 0$ or both are non-zero
+
+ - The null hypothesis $H_0$ contains two conjectures (two equal signs). 
+
+ - A test of $H_0$ is a joint test for whether all two conjectures hold simultaneously.
+
+---
+
+- Relative to $H_0:\beta_3 = 0, \beta_4 = 0,$ the model above is called **the unrestricted model**
+
+- If we assume the restriction under $H_0$ are true, the model becomes:
+
+$$SALES = \beta_1 + \beta_2 PRICE  + e$$
+
+- This model is called **the restricted model**
+
+
+---
+
+- The test of $H_0$ is based on a comparison of the SSE from the unrestricted ($SSE_U$) & restricted ($SSE_R$) models.
+
+- The F-statistic: $$F = \frac{(SSE_R - SSE_U)/J}{SSE_U/(N-K)}$$
+where $J=$number of restrictions under $H_0$, $N=$number of observations \& $K=$number of coefficient in the unrestricted model. 
+
+- Reject $H_0$ if $F >F_c$, where $F_c$ is a critical value $F_c(\alpha, J, N_K)$, where $\alpha$ is the level of significance
+
+---
+
+##  The F-test procedure 
+
+1. Specify $H_o$ and $H_1$
+
+2. Specify the test statistic (i.e., $F$), sample size $N$, and the number of restrictions $J$
+
+3. Set the significance level $\alpha$ and determine $F_c$ 
+
+4. calculate the sample test statistic (i.e., $F$) and the corresponding $P-$value
+
+5. State your conclusion 
+
+
+---
+
+## Example: 
+
+Testing the Effect of Advertising
+
+
+$$
+\begin{align}
+SALES = \beta_1 + \beta_2 PRICE + \beta_3 ADVERT +\\ \beta_4 ADVERT^2 + e
+\end{align}
+$$
+
+Test whether advertising has an effect on sales:  
+
+$H_0: \beta_3 = 0, \beta_4 = 0$
+
+$H_1: \beta_3 \neq 0$ or $\beta_4 \neq 0$ or both are nonzero
+
+---
+
+**Q:** How many restrictions do we have under $H_0$? 
+
+$J = 2$, $N = 75$, & let $\alpha = 5\%$.
+
+- The F-critical value $F_c=F(0.95, 2,71) = 3.126$
+
+- Calculate the sample value of the test statistic $F$ & the $p$-value
+
+  $$F = \frac{(SSE_R - SSE_U)/J}{SSE_U/(75 - 4)}=8.44$$
+
+- The corresponding $p$-value is:
+$$p=P(F(2,71) > 8.44)=0.0005, $$
+
+---
+
+- Since $F = 8.44 > F_c = 3.126$, we reject the null hypothesis that both $\beta_3 = 0$ \& $\beta_4 = 0$  and conclude that at least one of them is not zero.
+
+**Conclusion:** Advertising does have a significant effect upon sales revenue.
+
+- The same conclusion is reached by noting that $p$-value = $0.0005 < 0.05$.
+
+---
+
+
+```{r,echo=TRUE}
+library(tidyverse)
+load(url("http://www.principlesofeconometrics.com/poe5/data/rdata/andy.rdata"))
+
+unrestricted <- lm(sales~price+advert+I(advert^2), data=andy) 
+restricted <- lm(sales~price, data=andy) # restricted model, only price
+
+#' F-test, equation 6.4 on the restriction
+Ftest <- anova(restricted,unrestricted) 
+Ftest$F[2] # the calculated F
+
+#' The critical F-value
+qf(0.95,2,71)
+```
+
+---
+
+```{r,echo=TRUE}
+#' Draw the F-distribution
+curve(df(x,2,71),0,10, col="aquamarine4", main="F-distribution with 2 and 71 df")
+abline(h=0, col="grey")
+abline(v=qf(0.95,2,71), col="red") # The critical F
+abline(v=Ftest$F[2], col="blue") # the calculated F, and area to the right of the blue line is the p-value
+
+```
+
+
+```{r,echo=TRUE}
+# p-value
+pf(Ftest$F[2],2,71, lower.tail = FALSE) 
+
+```
+
+---
+
+## Testing the Significance of the Model
+
+Consider the general multiple regression model:
+
+$$y= \beta_1 + \beta_2 x_2 +\beta_3 x_3 +...\beta_k x_k +e $$
+ 
+**Q:**How do we determine whether we have a viable explanatory model?
+
+$H_0: \beta_2 = 0, \beta_3 = 0, ..., \beta_k = 0$
+
+$H_1: \text{at least one of the}\ \beta_k \ \text{is nonzero for}$ 
+
+
+- Such a test is often called a **test of overall significance of a model**
+
+---
+
+```{r,echo=TRUE}
+#' Testing the significance of the model 
+onlyinterc <- lm(sales~1, data=andy) # model that only has an intercept
+anova(onlyinterc,unrestricted) 
+
+```
+
+---
+
+```{r,echo=TRUE}
+summary(unrestricted)
+
+```
+
+---
+
+## The r/n b/n t- & F-tests
+
+**Q:** What if $H_0$ consists of a single equality rather than a joint hypothesis?
+
+- $H_0: \beta_k =0 \ \text{vs} \ \ H_1: \beta_k \neq 0$
+
+**Q:**Should we use an F-test or a t-test?
+
+---
+
+
+- When testing a single "equality" null hypothesis (a single restriction) against a "not equal to" alternative hypothesis, the $t$- or $F$-tests are equivalent.  
+
+- If $H_0$ has one equality or restriction, $t^2 = F$ with $F$ one df in numerator
+
+
+---
+
+```{r,echo=TRUE}
+unrestricted <- lm(sales~price+advert+I(advert^2), data=andy)
+restricted <- lm(sales~advert+I(advert^2), data=andy) 
+F2 <- anova(unrestricted,restricted)
+F2$F[2] # F-value equals the square of t-value
+qf(0.95,1,71) 
+
+```
+
+---
+
+```{r,echo=TRUE}
+# t-value of the price variable
+b <- coef(unrestricted) 
+t <- b/sqrt(diag(vcov(unrestricted))) # store t-values in vector
+t[2] 
+t[2]^2 # t-value for price squared
+
+qt(0.975,71)^2 
+
+```
+
+---
+
+## More General F-Tests
+
+- The $F$-test can also be used for much more general hypotheses. 
+
+- Any number of conjectures ($\leq K$) involving linear hypotheses with equal signs can be tested.
+
+---
+
+## Example: Testing Optimal Advertising
+
+- Consider the issue of testing: $\beta_3 +2\beta_4 ADVERT_0=1$
+
+- If $ADVERT_0 = \$1,900$ per month, then:
+
+$H_0: \beta_3 +2\beta_4 \times 1.9 = 1$
+
+$H_1:\beta_3 +2\beta_4\times 1.9 \neq 1$
+
+
+- Alternatively:
+
+ $H_0: \beta_3 +3.8\beta_4 = 1$
+
+ $H_1:\beta_3 +3.8\beta_4 \neq 1$
+
+---
+
+- Note that, when $H_0$ is true: $\beta_3 = 1 - 3.8\beta_4$
+
+$$
+\begin{align}
+SALES &= \beta_1 + \beta_2 PRICE + (1 - 3.8\beta_4) ADVERT+ \\
+      &\quad  \beta_4 ADVERT^2 + e
+\end{align}
+$$
+
+
+- Rearranging, we get: 
+
+$$
+\begin{align}
+(SALES-ADVERT) = \beta_1 + \beta_2 PRICE + \\
+                \beta_4(ADVERT^2-3.8 ADVERT) + e
+\end{align}
+$$
+
+---
+
+```{r,echo=TRUE}
+unrestricted <- lm(sales~price+advert+I(advert^2), data=andy) 
+#' H0 is true, b3 = 1 - 3.8 b4, 
+restricted <- lm(I(sales-advert) ~ price + I(advert^2-3.8*advert), data=andy) # Restricted model
+
+# Do an F-test
+SSEu <- deviance(unrestricted) 
+SSEr <- deviance(restricted) 
+Fvalue <- ((SSEr-SSEu)/1)/(SSEu/71) 
+# compare with the critical F value 
+Fvalue < qf(0.95,1,71) 
+
+# conclusion: 
+#' We conclude that an advertising expenditure of $1,900 per month is
+#' optimal is compatible with the data.
+
+```
+
+---
+
+Do the test directly on the unrestricted model
+
+```{r,echo=TRUE}
+library(car)
+linearHypothesis(unrestricted, "advert + 3.8*I(advert^2) = 1") 
+```
+
+
+---
+
+## The Use of Nonsample Information
+
+- In many estimation problems we have information over and above the information contained in the sample observations. 
+
+- This non-sample information may come from many places, such as economic principles or experience. 
+- When it is available, it seems intuitive that we should find a way to use it.
+
+---
+
+**Example:** Demand Model for Beer
+
+Consider the log-log functional form for a demand model for beer:
+
+$$ln(Q) = \beta_1 +\beta_2 ln(PB) + \beta_3 ln(PL) +\beta_4 ln(PR) + \beta_5 ln(I) +e$$
+
+
+- The coefficients $\beta_2, \beta_3, \beta_4,$ and $\beta_5$ are elasticities.
+
+---
+
+- A relevant piece of non-sample information:
+
+  > If all prices and income increase by the same proportion, the quantity demanded is expected to 
+    remain unchanged.
+
+  > Having all prices and income change by the same proportion is equivalent to multiplying each 
+    price & income by a constant, say $\lambda$:
+
+
+$$
+\begin{align}
+ln(Q) = \beta_1 +\beta_2 ln(\lambda PB) + \beta_3 ln(\lambda PL) +\\ \beta_4 ln(\lambda PR) + \beta_5 ln(\lambda I) +e
+\end{align}
+$$
+
+---
+
+- Using properties of logarithm, the model above becomes:
+
+\begin{align}
+ln(Q) = \beta_1 +\beta_2 ln(PB) + \beta_3 ln(PL) +\beta_4 ln(PR) + \\ \beta_5 ln(I)+(\beta_2 +\beta_3 + \beta_4 + \beta_5)ln(\lambda) +e
+\end{align}
+
+
+- To have no change in $\ln(Q)$ when all prices and income go up by the same proportion, it must be true that:
+$$(\beta_2 +\beta_3 + \beta_4 + \beta_5) =0 $$
+
+---
+
+- Substituting $\beta_4 = -\beta_2 -\beta_3 -\beta_5$ in the original model, we get:
+
+\begin{align}
+ln(Q) = \beta_1 +\beta_2 ln(\frac{PB}{PR}) + \beta_3 ln(\frac{PL}{PR}) +\beta_5 ln(\frac{I}{PR})  +e
+\end{align}
+
+- This is the restricted model
+
+- After estimating this model, we can use the restriction to recover the estimate of the reomved coefficient $\beta_4$
+
+---
+
+Note that:
+
+1. The restricted least squares estimator is biased, unless the constraints we impose are exactly true
+
+2. The restricted least squares estimator has a variance that is smaller than the variance of the least squares estimator, whether the constraints imposed are true or not
+
+
+---
+
+```{r,echo=TRUE}
+rm(list=ls())
+load(url("http://www.principlesofeconometrics.com/poe5/data/rdata/beer.rdata"))
+#' Unrestricted model, log-log model
+unrestricted <- lm(log(q)~log(pb)+log(pl)+log(pr)+log(i), data=beer)
+b <- coef(unrestricted) ; b
+b[2]+b[3]+b[4]+b[5] # sum is not equal to zero
+
+```
+
+---
+
+```{r,echo=TRUE}
+#' F-test on the restriction on the Unrestricted model
+library(car)
+linearHypothesis(unrestricted, "log(pb)+log(pl)+log(pr)+log(i) = 0") 
+
+```
+
+---
+
+```{r,echo=TRUE}
+#' Restricted model, under H0: b2+b3+b4+b5=0
+restricted <- lm(log(q)~log(pb/pr)+log(pl/pr)+log(i/pr), data=beer)
+c <- coef(restricted) ; c
+
+# recover the removed b4 coefficient for pr
+-c[2]-c[3]-c[4] 
+
+```
+
+```{r,echo=TRUE}
+#' Find its standard error, using the deltaMethod 
+deltaMethod(restricted, "-b2-b3-b4", parameterNames= paste("b", 1:4, sep="")) 
+
+```
+
+---
+
+## Model Specification
+
+In any econometric investigation, choice of the model is one of the first steps.
+
+  - What are the the important considerations when choosing a model?
+  
+  - What are the consequences of choosing the wrong model?
+  
+  - Are there ways of assessing whether a model is adequate
+  
+---
+
+## Model Specification
+
+Three essential features of model choice are:
+
+1. choice of functional form
+
+2. choice of explanatory variables (regressors) to be included in the model
+
+3. whether the multiple regression assumptions MR1–MR6 hold
+
+---
+
+## Causality vs Prediction
+
+There are two major reasons for analyzing a model:
+
+ 1.**Causality:** to explain how the dependent variable $(y_i)$ changes as the independent variable $(x_i)$ changes 
+ 
+ 2. **Prediction:**to predict $y_0$ given $x_0$ 
+
+---
+
+## Causality vs Prediction
+
+- With causal inference we are primarily interested in the effect of a change in a regressor on the conditional mean of the dependent variable. 
+
+- We wish to be able to say that a one-unit change in an explanatory variable will cause a particular change in the mean of the dependent variable, other factors held constant. 
+
+- This type of analysis is important for policy work.
+
+---
+
+## Causality vs Prediction 
+
+- If the purpose of a model is to predict the value of a dependent variable, then, for regressor choice, it is important to choose variables that are highly correlated with the dependent variable and that lead to a high $R^2$. 
+
+- Predictive analysis using variables from the increasingly popular field of "big data" is an example of where variables are chosen for their predictive ability rather than to examine causal relationships.
+
+---
+
+## Omitted Variables
+
+- It is possible that a chosen model may have important variables omitted. 
+
+- Our economic principles may have overlooked a variable, or 
+
+- a lack of data may lead us to drop a variable even when it is prescribed by economic theory.
+
+- Omission of a relevant variables leads to an estimator that is biased (**omitted variable bias**)
+
+---
+
+## Omitted Variables
+
+ Omitting a relevant variable is a special case of using a restricted least squares estimator where the restriction is not true. It leads to a biased estimator but one with a lower variance
+
+
+---
+
+**Example:** Effect of omitted variables from a model 
+
+- Consider the model:
+
+$$
+ln(FamilyIncome) = \beta_1 +\beta_2 Heduc +\beta_3 Weduc + e
+$$
+
+where $FamilyIncome=$Family income, $Heduc=$ husband education, and  $Weduc=$ wife's education. 
+
+**Q:** How do we interpret the parameter $\beta_2$? $\beta_3$?
+
+---
+
+```{r,echo=TRUE}
+rm(list=ls())
+load(url("http://www.principlesofeconometrics.com/poe5/data/rdata/edu_inc.rdata"))
+m1 <- lm(log(faminc)~hedu+wedu, data=edu_inc)
+summary(m1)
+
+```
+
+---
+
+
+**Q:** What happens if we incorrectly omit wife's education $(Weduc)$ from the model?
+
+$$
+ln(FamilyIncome) = \beta_1 +\beta_2 Heduc + e
+$$
+
+
+---
+
+
+```{r,echo=TRUE}
+m2 <- lm(log(faminc)~hedu, data=edu_inc) 
+summary(m2)
+
+```
+
+```{r}
+# Excluding a relevant variable, introducing bias
+coef(m1)[3]*(cov(edu_inc$hedu,edu_inc$wedu)/var(edu_inc$hedu)) # bias 6.23
+
+```
+
+---
+
+## Irrelevant Variables
+
+- You might think that a good strategy is to include as many variables as possible in your model.
+
+- Doing so will not only complicate your model unnecessarily, but may also inflate the variances of your estimates because of the presence of irrelevant variables 
+
+- Because they have no direct effect on the dependent variable, they have zero coefficients.
+
+---
+
+**Example:** The variables $xtra_{x5}$ \& $xtra_{x6}$ are irrelevant variables 
+
+$$
+\begin{align}
+ln(FamilyIncome) = \beta_1 +\beta_2 Heduc +\beta_3 Weduc+ \\ \beta_4 kl6 + \beta_5 xtra_{x5} + \beta_6 xtra_{x6}+ e
+\end{align}
+$$
+
+ where the variable $kl6=$ \# of children less than 6 years
+---
+
+```{r,echo=TRUE}
+# Irrelevant variables = xtra_x5, and xtra_x6
+m3 <- lm(log(faminc)~hedu+wedu+kl6+xtra_x5+xtra_x6, data=edu_inc)
+summary(m3)
+
+
+```
+
+---
+
+## Control Variables
+
+- Variables included in the equation to avoid omitted variable bias in the coefficient of interest are called control variables. 
+
+- For a control variable to serve its purpose and act as a proxy for an omitted variable, it needs to satisfy a conditional mean independence assumption (CMIA).
+
+- CMIA: implies after accounting for the control variable(s) $z$, the regressor 
+$X$ is no longer correlated with the error term.
+
+---
+
+- Labor economists are interested in the question: 
+
+  > What is the causal relationship between more education and higher wages? 
+
+- One variable that is clearly relevant, but difficult to include because it cannot be observed, is ability. 
+
+- More able people are likely to have more education, and so ability and education will be correlated.
+
+---
+
+- We can proceed to use IQ as a control variable or a proxy variable to replace ABILITY.
+
+- Once we know somebody's IQ, knowing their level of education does not add any extra information about their ability. 
+
+- CMIA in this particular case implies  
+$$E(ABILITY|EDUCATION, IQ) = E(ABILITY|IQ)$$
+
+---
+
+Example: A control variable for ability 
+
+- Consider the model:
+
+$$
+\begin{align}
+ln(WAGE)= \beta_1 +\beta_2 EDUC + \beta_3 EXPER + \\ \beta_4 EXPER^2 +\beta_5 ABILITY +e
+\end{align}
+$$
+
+- The variable **ABILITY** is not directly observed. 
+
+- If we omit  it from the model, the model will suffer from **omitted variable bias**
+
+
+---
+
+```{r,echo=TRUE}
+rm(list=ls())
+load(url("http://www.principlesofeconometrics.com/poe5/data/rdata/koop_tobias_87.rdata"))
+m1 <- lm(log(wage)~educ + exper + I(exper^2), data=koop_tobias_87)
+summary(m1)
+
+```
+
+
+---
+
+ - Use proxy or control variable to **ABILITY**.
+ 
+ - One such variable is to use such as **SCORE** test, which is constructed from different component tests.
+ 
+
+---
+
+```{r,echo=TRUE}
+m2 <- lm(log(wage)~educ + exper + I(exper^2)+score, data=koop_tobias_87)
+summary(m2)
+
+```
+
+---
+
+- The return to an extra year of education drops from 6.9% to 5.5% after including the variable **score**, suggesting that omiting the variable **ABILITY** has incorrectly attributed some of its effect to the level of education. 
+
+- There are has been little effect on the coefficients of **EXPER** and **EXPER^2** 
+
+---
+
+## Choosing a Model
+
+1. Is the purpose of the model to identify causal effects or prediction? Careful selection of control variables is necessary if the goal is causal inference. If the goal is to predict, then using variables that have high predictive power is the major concern.
+
+2. Having theoretical knowledge and understanding of the relationship are important for choosing the variables and functional form.
+
+3. If an estimated equation has coefficients with unexpected signs, or unrealistic magnitudes, they could be caused by a misspecification.
+
+---
+
+4. Patterns in least squares residuals can be helpful for uncovering problems caused by an incorrect functional form.
+
+5. One method for assessing whether a variable or a group of variables should be included in an equation is to perform significance tests.
+
+6. Have the leverage, studentized residuals, DFBETAS, and DFFITS measures identified any influential observations?
+
+7. Are the estimated coefficients robust with respect to alternative specifications?
+
+---
+
+8. A test known as **RESET (Regression Specification Error Test)** can be useful for detecting omitted variables or an incorrect functional form.
+
+9. Various model selection criteria, based on maximizing $R^2$, or minimizing the sum of squared errors (SSE), adjusted-$R^2$, $AIC$ , $BIC$, etc.
+
+10. A more stringent assessment of a model's predictive ability is to use a "hold-out" sample.
+
+11. Following the guidelines in the previous 10 points can almost inevitably lead to revisions of originally proposed model.
+
+---
+
+## RESET
+
+**RESET (REgression Specification Error Test)** is designed to detect omitted variables and incorrect functional form. 
+
+- Suppose we have the model: 
+
+$$y= \beta_1 +\beta_2 x_2 +\beta_3 x_3 +e$$
+
+- Let the predicted/fitted value of $y$ be:
+
+$$\hat y = b_1 +b_2 x_2 +b_3x_3$$
+
+---
+
+- Consider the following two artificial models: 
+
+$y= \beta_1 +\beta_2 x_2 +\beta_3 x_3+ \gamma_1 \hat y^2 +e$
+$y= \beta_1 +\beta_2 x_2 +\beta_3 x_3+ \gamma_1 \hat y^2+ \gamma_2 \hat y^3 +e$
+
+
+-  Model misspecification can be assessed by evaluating the estimates of $\gamma_1$ and $\gamma_2$
+
+---
+
+A test of miss-specification:
+
+  - In the first model: $H_0: \gamma_1 = 0$ vs $H_1: \gamma_1 \neq 0$ 
+
+  - In the second model:$H_0: \gamma_1 = \gamma_2 = 0$ vs $H_1: \gamma_1 \neq 0$ and/or $\gamma_2 \neq 0$ 
+
+- Rejection of $H_0$ implies that the original model is inadequate and can be improved. A failure to reject $H_0$ says that the test has not been able to detect any misspecification.
+
+---
+
+
+```{r,echo=TRUE}
+rm(list=ls())
+load(url("http://www.principlesofeconometrics.com/poe5/data/rdata/edu_inc.rdata"))
+m1 <- lm(log(faminc)~hedu+wedu+kl6, data=edu_inc)
+
+#' RESET Test
+library(lmtest)
+
+# Table 6.1 Bottom
+resettest(m1, power=2, type="fitted") 
+resettest(m1, power=2:3, type="fitted")
+```
+
+---
+
+```{r,echo=TRUE}
+#' Manually
+y <- m1$fitted.values
+restricted <- lm(log(faminc)~hedu+wedu+I(y^2), data=edu_inc)
+a <- summary(restricted)
+b <- coef(a)[, "t value"] # or coef(a)[,3]
+#' Compare the two values
+b[4]^2
+resettest(m1, power=2, type="fitted")$statistic
+
+```
+
+---
+
+## Reading  Assignments
+
+Read section 6.4 - 6.6 
+
+
+
