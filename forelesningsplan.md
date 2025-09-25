@@ -58,6 +58,7 @@
 |||[R code for Chap 06](https://github.com/UiT-SOK-3020-H25/UiT-SOK-3020-H25.github.io/blob/main/Chapter_6.R)|
 |14|22/09|continue with chapter 06|
 ||| [Quarto file, Chap-6](https://github.com/UiT-SOK-3020-H25/UiT-SOK-3020-H25.github.io/blob/main/chap06.qmd) |
+||25/09|[Solution to Q 2.17, Q2.18, and Q 2.27](https://github.com/UiT-SOK-3020-H25/UiT-SOK-3020-H25.github.io/blob/main/Exer_chap2_motel.R)|
 |15|||
 |16|||
 ||||
