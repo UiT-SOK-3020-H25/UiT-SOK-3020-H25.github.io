@@ -59,7 +59,11 @@
 |14|22/09|continue with chapter 06|
 ||| [Quarto file, Chap-6](https://github.com/UiT-SOK-3020-H25/UiT-SOK-3020-H25.github.io/blob/main/chap06.qmd) |
 ||25/09|[Solution to Q 2.17, Q2.18, and Q 2.27](https://github.com/UiT-SOK-3020-H25/UiT-SOK-3020-H25.github.io/blob/main/Exer_chap2_motel.R)|
-|15|||
+||||
+||||
+|15|29/09| Chapter 07:Using Indicator Variables|
+|||[R codes for chap 07](https://raw.githubusercontent.com/uit-sok-3020-h24/uit-sok-3020-h24.github.io/main/chapter_7.R) |
+|||[Simple dummy R code ](https://raw.githubusercontent.com/uit-sok-3020-h23/uit-sok-3020-h23.github.io/main/simple_dummy.R)|
 |16|||
 ||||
 ||||
