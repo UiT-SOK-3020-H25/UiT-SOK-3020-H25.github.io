@@ -64,7 +64,7 @@
 |15|29/09| Chapter 07:Using Indicator Variables|
 |||[R codes for chap 07](https://raw.githubusercontent.com/uit-sok-3020-h24/uit-sok-3020-h24.github.io/main/chapter_7.R) |
 |||[Simple dummy R code ](https://raw.githubusercontent.com/uit-sok-3020-h23/uit-sok-3020-h23.github.io/main/simple_dummy.R)|
-|||[R codes from class](https://github.com/UiT-SOK-3020-H25/UiT-SOK-3020-H25.github.io/blob/main/Solution_Q3.20.R)|
+|||[R codes from class](https://github.com/UiT-SOK-3020-H25/UiT-SOK-3020-H25.github.io/blob/main/test_1.R)|
 ||||
 ||||
 |||[Solution to Q3.20](https://github.com/UiT-SOK-3020-H25/UiT-SOK-3020-H25.github.io/blob/main/Solution_Q3.20.R)|
