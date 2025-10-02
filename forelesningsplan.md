@@ -69,6 +69,8 @@
 |||[Solution to Q3.20](https://github.com/UiT-SOK-3020-H25/UiT-SOK-3020-H25.github.io/blob/main/Solution_Q3.20.R)|
 |||[Solution to Q 4.16](https://github.com/UiT-SOK-3020-H25/UiT-SOK-3020-H25.github.io/blob/main/Solution_Q4.16.R)|
 |||[Solution to Q 5.18](https://github.com/UiT-SOK-3020-H25/UiT-SOK-3020-H25.github.io/blob/main/Solution_Q5.18.R)|
+||||
+|Exercise 4|| Try Q 6.17 and Q 6.18  on page 303 from the textbook |
 |16|||
 ||||
 ||||
