@@ -78,6 +78,7 @@
 ||||
 |Exercise 5|| Try Q 7.17 on page 359 and Q 7.24  on page 362 from the textbook|
 |17|13/10| Chapter 08: Heteroskedasticity|
+|||[R codes from Chap 08](https://github.com/UiT-SOK-3020-H25/UiT-SOK-3020-H25.github.io/blob/main/Chapter_08.R)|
 ||||
 ||||
 ||||
