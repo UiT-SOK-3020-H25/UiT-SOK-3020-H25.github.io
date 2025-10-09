@@ -76,6 +76,7 @@
 |||[Solution to Q 6.18](https://github.com/UiT-SOK-3020-H25/UiT-SOK-3020-H25.github.io/blob/main/Solution_6.18.R)|
 |16|06/10| continue with chapter 07|
 ||||
+|Exercise 5|| Try Q 7.17 on page 359 and Q 7.24  on page 362 from the textbook|
 |17|13/10| Chapter 08: Heteroskedasticity|
 ||||
 ||||
