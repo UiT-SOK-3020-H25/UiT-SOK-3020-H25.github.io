@@ -1,6 +1,5 @@
 
 #' Chapter 08 
-#' 
 #' Heteroskedasticity
 
 rm(list=ls())
@@ -19,16 +18,12 @@ head(food)
 fit <- lm(food_exp~income, data = food)
 summary(fit)
 
-# Figure 8.2, ggplot
+# Figu# Figu# Figure 8.2, ggplot
 fit %>% augment() %>% select(.resid, income) %>% ggplot(aes(x=income,y=abs(.resid))) + geom_point(col="darkgreen") +
   ggtitle("Figure 8.2: Absolute value of food expenditure residuals vs. income") +
   xlab("Weekly household income") + ylab(expression(abs(phantom(x)*hat(e)[i]*phantom(x)))) +
   theme_classic()
 
-# Figure 8.2, base R
-plot(food$income,abs(resid(fit)), pch=19, col="darkgreen",
-     main="Figure 8.2: Absolute value of food expenditure residuals vs. income",
-     xlab="Weekly household income", ylab=expression(abs(phantom(x)*hat(e)[i]*phantom(x))))
 
 # Figure 8.3, ggplot
 fit %>% augment() %>% select(.resid,income) %>% ggplot(aes(x=income,y=.resid)) + geom_point() +
@@ -36,9 +31,6 @@ fit %>% augment() %>% select(.resid,income) %>% ggplot(aes(x=income,y=.resid)) +
   xlab("Weekly household income") + ylab(expression(hat(e)[i])) +
   geom_hline(yintercept=0, col="red")
 
-# Figure 8.3, base R
-plot(food$income,resid(fit))
-abline(h=0, col="red")
 
 # If we save the broom::augment() as data
 fit.metrics <- augment(fit)
@@ -60,7 +52,6 @@ head(fit.metrics)
 #' Regression Assumption: Homogeneity of variance
 #' This assumption can be checked by examining the scale-location plot, also known as the spread-location plot.
 plot(fit, 3)
-
 #' This plot shows if residuals are spread equally along the ranges of predictors.
 #' It's good if you see a horizontal line with equally spread points.
 #' In this example, this is not the case.
@@ -69,6 +60,9 @@ plot(fit, 3)
 #' of the fitted outcome variable, suggesting non-constant variances in the residuals errors (or heteroscedasticity).
 
 
+#############################################
+# Robust standard errors
+##############################################
 
 # Example 8.2 Robust standard errors
 # Correct Variance Covariance matrix for Heteroskedasticity
@@ -105,10 +99,15 @@ linearHypothesis(fit, c("(Intercept) = 0"),
                  vcov = hccm(fit, type = "hc1"))
 
 
+###########################################################################
+#GLS, known form of variance, aka. Weighted Least Squares (WLS)
+############################################################################
+
 # Chapter 8.4 GLS, known form of variance, aka. Weighted Least Squares (WLS)
 # We assume that var(e|x)= sigma^2 * x, hence the weight is 1/x since 1/x * sigma^2 * x = sigma^2
-fit.gls <- lm(food_exp~income, weights=I(1/income), data=food)
+fit.gls <- lm(food_exp ~ income, weights=I(1/income), data=food)
 summary(fit.gls)
+summary(fit)
 confint(fit.gls)
 
 # Long way WLS, equation 8.13, p. 376
@@ -122,6 +121,8 @@ summary(fit.gls.alt)
 library(stargazer)
 stargazer(fit, fit.gls, fit.gls.alt, type="text")
 
+
+
 # Figure 8.4, p. 378
 ols_resid <- augment(fit) %>% select(.resid)
 gls_resid <- resid(fit.gls.alt)
@@ -132,6 +133,10 @@ legend(29, 150, legend=c("OLS residuals", "GLS residuals"),
        col=c("red", "black"), pch=c(16,16))
 
 
+
+###################################################################
+#Multiplicative Heteroscedasticity
+######################################################################
 
 # Example 8.4 Multiplicative Heteroscedasticity in the Food Expenditure Model
 # Estimating the variance function, p. 382
@@ -148,10 +153,11 @@ sigma2 <- exp(coef(fit2)[2]*log(food$income))
 # sigma2 <- exp(predict(fit2)) # easier
 
 # Then do Weighted Least Squares model, eqtn. 8.21
-fit.gls.var <- lm(food_exp~income, weights=I(1/sigma2), data=food)
+fit.gls.var <- lm(food_exp ~ income, weights=I(1/sigma2), data=food)
 summary(fit.gls.var)
 
-
+###################################################
+#####################################################
 
 #' Detecting Heteroscedasticity
 library(lmtest)
@@ -166,11 +172,13 @@ gqtest(fit)
 
 # The H0 is homoscedastic errors
 bptest(fit, studentize = FALSE) # B-P or LM test
-ncvTest(fit) # package car, same test
+
+car::ncvTest(fit) # package car, same test
 
 # White test
 # second order
-bptest(lm(food_exp~income+I(income^2), data=food), studentize=F)
+m1 <- lm(food_exp~income+I(income^2), data=food)
+bptest(m1, studentize=F)
 # second order and third order
 bptest(lm(food_exp~income+I(income^2)+I(income^3), data=food), studentize=F)
 
@@ -178,7 +186,10 @@ bptest(lm(food_exp~income+I(income^2)+I(income^3), data=food), studentize=F)
 browseURL("https://cran.r-project.org/web/packages/olsrr/vignettes/heteroskedasticity.html")
 browseURL("https://cran.r-project.org/web/packages/olsrr/")
 
-########### end
+
+
+
+######################### end  ####################################
 
 
 # Not run, not SOK-3020 curriculum
