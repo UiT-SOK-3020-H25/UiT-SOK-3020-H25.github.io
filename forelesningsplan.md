@@ -80,6 +80,7 @@
 |17|13/10| Chapter 08: Heteroskedasticity|
 |||[R codes from Chap 08](https://github.com/UiT-SOK-3020-H25/UiT-SOK-3020-H25.github.io/blob/main/Chapter_08.R)|
 ||||
+|Exercise 5|| Try Q 8.16, Q 8.19, and Q 8.20 from chapter 08, from the textbook |
 ||||
 ||||
 
