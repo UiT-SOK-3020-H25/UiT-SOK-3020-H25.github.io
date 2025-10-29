@@ -3,7 +3,7 @@
 #' particularly when constructing confidence intervals using the deltaMethod. 
 #' Apart from that, it generally provided correct and well-structured answers.
 #' In the following code, I have included both the solution proposed by ChatGPT and 
-#' the correct answers to Item 3 of last year exam. The solution suggested by ChatGPT appears between 
+#' the correct answers to Item 3 of last year's exam. The solution suggested by ChatGPT appears between 
 #' large comment lines for reference.
 #' Additionally, I have inserted my own comments between two dashed lines to help you follow my reasoning.
 
@@ -46,8 +46,8 @@ cat("Standard error of the difference:", round(se_b1, 2), "\n")
 ########################################################################
 #---------------------------------------------------------------------------
 # My comments:
-#ChatGPT is correct except on the standard error if the difference,
-# which the correct answer here is:
+#ChatGPT is correct except for the standard error of the difference,
+# which is the correct answer here:
 car::deltaMethod(model1, "(b1/b0) * 100", parameterNames=paste("b",0:1, sep = ""), level=0.90)
 # Alternatively (notice the notation, 0:1 and 1:2 in the codes)
 car::deltaMethod(model1, "(b2/b1)*100", parameterNames=paste("b",1:2, sep = ""))
@@ -59,7 +59,7 @@ car::deltaMethod(model1, "(b2/b1)*100", parameterNames=paste("b",1:2, sep = ""))
 ############################
 # Using model1 from Question 1
 confint(model1, "(Intercept)", level = 0.95)
-# mannually
+# manually
 b0 <- coef(summary(model1))["(Intercept)", "Estimate"]
 se_b0 <- coef(summary(model1))["(Intercept)", "Std. Error"]
 ci_1990 <- c(b0 - 1.96 * se_b0, b0 + 1.96 * se_b0)
@@ -67,9 +67,9 @@ ci_1990
 #########################################################
 #-------------------------------------------------------------------------------
 # My comments: 
-# chatGPt gave us two different solutions, one using the function confinit() and another using 
-# the mannual approach. The answer from the manual approach is correct since it uses z(alpha=5%)=1.96,
-# the function confit() use t-distribution
+# ChatGPT gave us two different solutions, one using the function confinit() and another using 
+# the manual approach. The answer from the manual approach is correct since it uses z(alpha=5%)=1.96,
+# the function confit() uses the  t-distribution
 
 # deltaMethod also uses the z-distribution to construct CI
 car::deltaMethod(model1, "b1", parameterNames=paste("b",1:2, sep = ""), level=0.95)
@@ -83,7 +83,7 @@ library(multcomp)
 ci_2000 <- confint(glht(model1, linfct = c("(Intercept) + d = 0")))
 ci_2000
 
-# Mannually 
+# Manually 
 b0 <- coef(model1)[1]
 b1 <- coef(model1)[2]
 vc <- vcov(model1)
@@ -93,11 +93,11 @@ ci_2000
 #####################################################################
 
 #----------------------------------------------------
-# My comments: Again only the manuall option is correct 
+# My comments: Again, only the manual option is correct 
 
 # or using delta Method
 car::deltaMethod(model1, "b1+b2", parameterNames=paste("b",1:2, sep = ""), level=0.95)
-# It seems there is a bit discrepancy between the manual option and delta Method, but that is okay, it is just slight diff
+# It seems there is a bit discrepancy between the manual option and the delta Method, but that is okay, it is just a slight diff
 #--------------------------------------------------------------------------------------------------
 
 # Item 3: Construct a 90% confidence interval for the percentage.....
@@ -109,7 +109,7 @@ b1 <- coef(model1)[2]
 # Variance-covariance matrix
 vc <- vcov(model1)
 
-# Standard error using delta method
+# Standard error using the delta method
 se_pct <- 100 * sqrt( vc[2,2]/b0^2 + (b1^2 * vc[1,1])/b0^4 - 2*b1*vc[1,2]/b0^3 )
 
 # Point estimate of percentage difference
@@ -121,8 +121,8 @@ ci_90
 ###########################################################################
 
 #--------------------------------------------------------------
-# My comments: the answer from chatGPT is correct 
-# Or simply using the delta MEthod (notice the level of confidence here, i.e., level = 0.90)
+# My comments: the answer from ChatGPT is correct 
+# Or simply using the delta Method (notice the level of confidence here, i.e., level = 0.90)
 car::deltaMethod(model1, "(b2/b1)*100", parameterNames=paste("b",1:2, sep = ""), level= 0.90)
 #----------------------------------------------------------------------------------
 
@@ -148,8 +148,8 @@ cat("Significant at 5% level:", ifelse(pval_b1 < 0.05, "Yes", "No"), "\n")
 cat("R-squared:", round(r2,3), "\n")
 ######################################################################################
 #-------------------------------------------------------------------------------------------
-# My comments: The Percentage change from 1990 to 2000 obtained using chatGPT(i.e., 25.58 %) is not correct.
-# Remember the question here is on the interpretation of the coefficient of a dummy variable in log-linear model.
+# My comments: The Percentage change from 1990 to 2000 obtained using ChatGPT (i.e., 25.58 %) is not correct.
+# Remember the question here is on the interpretation of the coefficient of a dummy variable in a log-linear model.
 # The correct value should be computed as: 100*(exp(b2)-1), using deltaMethod, 
 
 # the percentage diff
@@ -172,8 +172,8 @@ ci_pct
 ####################################################
 
 #----------------------------------------------------------------
-# My comments: chatGPT used t-distribution to combute the CI
-# Using the delta Method the correct solution (is will be:
+# My comments: ChatGPT used the t-distribution to compute the CI
+# Using the delta Method, the correct solution will be:
 car::deltaMethod(model_log, "100*(exp(b2)-1)", parameterNames=paste("b",1:2, sep = ""), level=0.90)
 #-------------------------------------------------------------------------------------------------
 
@@ -189,13 +189,13 @@ avg_sales
 ##################################################################
 
 #------------------------------------------------------------------------------------------
-# My comments:  the variable "avgprice" and "units" are integers, you can see this by 
+# My comments:  the variables "avgprice" and "units" are integers, you can see this by 
 # running the class() function as: 
 # Create sales variable
 class(means$avgprice)
 class(means$units)
 # It seems like R does not  produce results when we multiply two integers, but when 
-# we convert to numeric using the function "as.numeric()" as you can see below, it produce a result
+# we convert to numeric using the function "as.numeric()" as you can see below, it produces a result
 means$sales <- as.numeric(means$avgprice) * as.numeric(means$units)
 # Average sales across all cities and years (in billions)
 avg_sales <- mean(means$sales) / 1e9
@@ -205,6 +205,7 @@ avg_sales
 
 
 
-# Here is the complete solution of H2024 exams using chatGPT
+# Here is the complete solution of the H2024 exam using ChatGPT
 browseURL("https://chatgpt.com/share/6901ca38-2330-8003-a799-9e7ac28edff3")
+
 
